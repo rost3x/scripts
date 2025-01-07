@@ -7,6 +7,13 @@ echo "+-------------------------------+"
 
 top -bn1 | grep '%Cpu(s)'| cut -d ',' -f 4 | awk '{print 100-$1 "%"}'
 
+#Display total memory usage including percentage
+echo "+-------------------------------+"
+echo "|Total memory usage		|"
+echo "+-------------------------------+"
+
+free -m | awk ' NR == 2 { print $2 "\n" $3 "\n" 100*$3/$2 "%" } '
+
 #Display total disk usage including percentage
 echo "+-------------------------------+"
 echo "|Total disk usage		|"
