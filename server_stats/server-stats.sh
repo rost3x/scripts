@@ -12,7 +12,7 @@ echo "+-------------------------------+"
 echo "|Total memory usage		|"
 echo "+-------------------------------+"
 
-free -m | awk 'NR == 2 {print $2 "\n" $3 "\n" 100*$3/$2 "%"}'
+free -m | awk 'NR == 2 {printf "Free: %sMi\nUsed: %sMi / %.2f%\n", $4, $3, 100*$3/$2}'
 
 #Display total disk usage including percentage
 echo "+-------------------------------+"
@@ -26,11 +26,11 @@ echo "+-------------------------------+"
 echo "|Top 5 CPU processes		|"
 echo "+-------------------------------+"
 
-ps -eo pcpu,pid,user,args | sort -k 1 -r | head -5
+ps -eo pcpu,pid,user,args | sort -k 1 -r | head -6
 
 # Display top 5 processes used by memory
 echo "+-------------------------------+"
 echo "|Top 5 Memory processes		|"
 echo "+-------------------------------+"
 
-ps -eo pmem,pid,user,args | sort -k 1 -r | head -5
+ps -eo pmem,pid,user,args | sort -k 1 -r | head -6
