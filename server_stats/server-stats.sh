@@ -5,7 +5,7 @@ echo "+-------------------------------+"
 echo "|Total CPU usage		|"
 echo "+-------------------------------+"
 
-top -bn1 | grep '%Cpu(s)'| cut -d ',' -f 4 | awk '{print 100-$1 "%"}'
+top -bn1 | awk -F ',' '/%Cpu\(s\)/ {print 100 - $4 "%"}'
 
 #Display total memory usage including percentage
 echo "+-------------------------------+"
