@@ -12,14 +12,14 @@ echo "+-------------------------------+"
 echo "|Total memory usage		|"
 echo "+-------------------------------+"
 
-free -m | awk ' NR == 2 { print $2 "\n" $3 "\n" 100*$3/$2 "%" } '
+free -m | awk 'NR == 2 {print $2 "\n" $3 "\n" 100*$3/$2 "%"}'
 
 #Display total disk usage including percentage
 echo "+-------------------------------+"
 echo "|Total disk usage		|"
 echo "+-------------------------------+"
 
-df -h --total | tail -1 | awk '{ print "Free: " $4 "\n" "Used: " $3 " / " $5 }'
+df -h --total | tail -1 | awk '{printf "Free: %s\nUsed: %s / %s\n", $4, $3, $5}'
 
 # Display top 5 processes used by the cpu
 echo "+-------------------------------+"
