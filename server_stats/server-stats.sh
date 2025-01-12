@@ -1,6 +1,14 @@
 #!/bin/bash
 
-# Display total CPU usage
+#Display system overview
+echo "+-------------------------------+"
+echo "|System information		|"
+echo "+-------------------------------+"
+
+awk -F= '/^NAME/{print $2}' /etc/*release
+uname -r | awk '{printf "Kernel version: %s\n", $1}'
+
+#Display total CPU usage
 echo "+-------------------------------+"
 echo "|Total CPU usage		|"
 echo "+-------------------------------+"
